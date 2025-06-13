@@ -17,4 +17,5 @@ Route::get('/mahasiswa', function () {
 });
 Route::get('biodata', [Biodatacontroller::class,'index']);
 Route::post('biodata', [Biodatacontroller::class,'proses']);
+Route::get('/mahasiswa', [BiodataController::class, 'mahasiswa']);
 

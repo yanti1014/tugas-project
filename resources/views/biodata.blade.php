@@ -1,34 +1,45 @@
 @extends('layout.template')
-@section('judul','Halaman Biodata')
+@section('judul', 'Halaman Biodata')
 @section('isi')
-    
-@endsection
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
     <h2>Halaman Formulir Biodata</h2>
-    <form action="\biodata" method="POST">
+    <form action="/biodata" method="post">
         @csrf
-        Nama : <br>
-        <input type="text" name="nama" id=""> <br>
-        @error('nama')
-        <br> <label style="color: red">($message)</label>
-        @enderror
-        jenis kelamin : <br>
-        <select name="gender" id="">
-            <option value="">-- Pilih--</option>
-            <option value="Laki-Laki">Laki-laki</option>
-            <option value="Perempuan">Perempuan</option>
-        </select> <br>
-        Email : <br>
-        <input type="text" name="email" id=""> <br>
-        
-        Nomor Ponsel : <br>
-        <input type="text" name="nomor ponsel" id=""> <br>
-        <br>
-        <button type="submit">Kirim</button>
+    Nama : <br>
+    <input type="text" name="nama" id="nama" value="{{ old('nama') }}">
+    @error ('nama')
+    <br>
+    <label style="color: red"> {{ $message }} </label> 
+    @enderror
+    <br>
+    <br>
+    Jenis Kelamin : <br>
+    <select name="gender" id="gender">
+        <option value="">-----Pilih-----</option>
+        <option value="laki-laki">Laki-laki</option>
+        <option value="perempuan">Perempuan</option>
+    </select> 
+    @error ('gender')
+    <br>
+    <label style="color: red">{{ $message }} </label> 
+    @enderror
+    <br>
+    <br>
+    Email : <br>
+    <input type="text" name="email" id="email" value="{{ old('email') }}">
+    @error ('email')
+    <br>
+    <label style="color: red">{{ $message }} </label> 
+    @enderror
+    <br>
+    <br>
+    Nomor Telepon : <br>
+    <input type="text" name="phone" id="phone" value="{{ old('phone') }}">
+    @error ('phone')
+    <br>
+    <label style="color: red"> {{ $message }} </label> 
+    @enderror
+    <br>
+    <br>
+    <button type="submit">Submit</button>
     </form>
 @endsection

@@ -6,38 +6,32 @@ use Illuminate\Http\Request;
 
 class Biodatacontroller extends Controller
 {
-    public function index()
-    {
+    //view tampilan
+    //controller mengatur
+    //model database dll
+    public function index(){
         return view('biodata');
     }
-
-    public function proses(Request $request)
-    {
-        $request->validate([
-            'nama' => 'required',
-            'gender' => 'required',
-            'email' => 'required|email',
-            'ponsel' => 'required'
-        ], [
-            'nama.required' => 'Nama Lengkap Harus Diisi!',
-            'gender.required' => 'Jenis Kelamin harus Dipilih',
-            'email.required' => "Email Harus Diisi!",
-            'email.email' => 'Format Email Masih Salah!',
-            'ponsel.required' => 'Nomor Ponsel Wajib Diisi!'
-        ]);
-        return view('hasil', [
-            'nama' => $request->nama,
-            'gender' => $request->gender,
-            'email' => $request->email,
-            'ponsel' => $request->ponsel
-        ]);
-    }
-    public function biodata()
-    {
-        return view('biodata');
-    }
-    public function mahasiswa()
-    {
+    public function mahasiswa(){
         return view('mahasiswa');
+    }
+    public function proses(Request $request){
+        //dd($request);
+        $request->validate([
+            'nama' => 'required|max:30',
+            'gender' => 'required',
+            'email' => 'required|email:dns',
+            'phone' => 'required'
+        ],[
+            'nama.required' => 'Nama harus diisi',
+            'gender.required' => 'Jenis Kelamin harus diisi',
+            'email.required' => 'Email harus diisi',
+            'email.email' => 'Email tidak valid',
+            'phone.required' => 'No HP harus diisi'
+        ]);
+       echo "Nama : $request->nama <br>";
+       echo "Jenis Kelamin : $request->gender <br>";
+       echo "Email : $request->email <br>";
+       echo "No HP : $request->phone<br>";
     }
 }

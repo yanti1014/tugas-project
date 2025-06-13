@@ -1,3 +1,9 @@
-<div>
-    <!-- The biggest battle is the war against ignorance. - Mustafa Kemal Atatürk -->
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@yield('judul')</title>
+</head>
+<body>
+    @yield('isi')
+</body>
+</html>
